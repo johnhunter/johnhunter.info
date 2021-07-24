@@ -1,0 +1,29 @@
+{
+  "name": "johnhunter.info",
+  "version": "1.0.0",
+  "description": "A personal blog",
+  "author": {
+    "name": "John Hunter",
+    "email": "john@johnhunter.info"
+  },
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "eleventy",
+    "watch": "eleventy --watch",
+    "start": "eleventy --serve",
+    "debug": "DEBUG=* eleventy",
+    "clean": "rm -rf _site/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnhunter/johnhunter.info.git"
+  },
+  "bugs": {
+    "url": "https://github.com/johnhunter/johnhunter.info/issues"
+  },
+  "homepage": "https://github.com/johnhunter/johnhunter.info#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1"
+  }
+}

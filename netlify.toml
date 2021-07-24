@@ -1,6 +1,7 @@
 
 [build]
   publish = "_site"
+  command = "npm run build"
 
 [build.processing]
 [build.processing.html]
