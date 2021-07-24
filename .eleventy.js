@@ -1,22 +1,49 @@
+const eleventyLoad = require('eleventy-load');
+const eleventyLoadHtml = require('eleventy-load-html');
+const eleventyLoadSass = require('eleventy-load-sass');
+const eleventyLoadCss = require('eleventy-load-css');
+const eleventyLoadFile = require('eleventy-load-file');
+
 module.exports = function(eleventyConfig) {
-  return {
-    templateFormats: [
-      "md",
-      "njk",
-      "html",
+
+  // Process SASS files
+  eleventyConfig.addWatchTarget('src/sass/');
+  eleventyConfig.addPlugin(eleventyLoad, {
+    rules: [
+      {
+        test: /\.(html|md|njk)$$/,
+        loaders: [
+          { loader: eleventyLoadHtml },
+        ],
+      },
+      {
+        test: /\.scss$/,
+        loaders: [
+          { loader: eleventyLoadSass },
+          { loader: eleventyLoadCss },
+          {
+            loader: eleventyLoadFile,
+            options: {
+              name: '[hash].css',
+            },
+          },
+        ],
+      },
     ],
+  });
 
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
+  return {
+    templateFormats: ['md', 'njk', 'html'],
 
-    // Opt-out of pre-processing global data JSON files: (default: `liquid`)
-    dataTemplateEngine: false,
+    markdownTemplateEngine: 'njk',
+    htmlTemplateEngine: 'njk',
+    // dataTemplateEngine: 'njk',
 
     dir: {
-      input: "./src",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
+      input: 'src',
+      includes: '_includes',
+      data: '_data',
+      output: '_site'
     }
   };
 };
