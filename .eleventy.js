@@ -1,10 +1,14 @@
+const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const eleventyLoad = require('eleventy-load');
 const eleventyLoadHtml = require('eleventy-load-html');
 const eleventyLoadSass = require('eleventy-load-sass');
 const eleventyLoadCss = require('eleventy-load-css');
 const eleventyLoadFile = require('eleventy-load-file');
 
+const isProduction = process.env.NODE_ENV === `production`;
+
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(pluginSyntaxHighlight);
 
   // Process SASS files
   eleventyConfig.addWatchTarget('src/sass/');
@@ -19,7 +23,14 @@ module.exports = function(eleventyConfig) {
       {
         test: /\.scss$/,
         loaders: [
-          { loader: eleventyLoadSass },
+          {
+            loader: eleventyLoadSass,
+            options: {
+              sass: {
+                outputStyle: isProduction ? 'compressed' : 'expanded',
+              }
+            }
+          },
           { loader: eleventyLoadCss },
           {
             loader: eleventyLoadFile,
