@@ -1,3 +1,10 @@
+@import 'prism-tomorrow';
+
 main {
   margin: 1rem;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  border-radius: .5rem;
 }

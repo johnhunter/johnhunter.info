@@ -2,4 +2,12 @@
 layout: layouts/base.njk
 title: johnhunter.info
 ---
-# Nothing to see for now
+
+```js
+/**
+ * Nothing to see here for now, just a wave.
+ **/
+console.log('Hello 👋');
+
+
+```
