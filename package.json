@@ -4,7 +4,8 @@
   "description": "A personal blog",
   "author": {
     "name": "John Hunter",
-    "email": "john@johnhunter.info"
+    "email": "john@johnhunter.info",
+    "url": "https://johnhunter.info/"
   },
   "private": true,
   "license": "UNLICENSED",
