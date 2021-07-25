@@ -1,7 +1,7 @@
 
 [build]
   publish = "_site"
-  command = "npm run build"
+  command = "npm run build:ci"
 
 [build.processing]
 [build.processing.html]
