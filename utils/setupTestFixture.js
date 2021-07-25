@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const JSDOM = require('JSDOM');
 
 const rootDir = path.resolve(__dirname, '../');
 
