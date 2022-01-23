@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/johnhunter/johnhunter.info#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@testing-library/dom": "^8.11.3",
     "eleventy-load": "^0.3.0",
