@@ -9,6 +9,9 @@
   },
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "clean": "rm -rf _site/*",
     "build": "eleventy",
@@ -28,6 +31,7 @@
     "url": "https://github.com/johnhunter/johnhunter.info/issues"
   },
   "homepage": "https://github.com/johnhunter/johnhunter.info#readme",
+  "dependencies": {},
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
