@@ -31,16 +31,12 @@
     "url": "https://github.com/johnhunter/johnhunter.info/issues"
   },
   "homepage": "https://github.com/johnhunter/johnhunter.info#readme",
-  "dependencies": {},
+  "dependencies": {
+    "sass": "^1.49.9"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
-    "@testing-library/dom": "^8.11.3",
-    "eleventy-load": "^0.3.0",
-    "eleventy-load-css": "^0.3.0",
-    "eleventy-load-file": "^0.1.0",
-    "eleventy-load-html": "^0.1.1",
-    "eleventy-load-sass": "^0.1.2",
     "jest": "^27.5.1"
   }
 }

@@ -15,7 +15,7 @@ describe('Homepage', () => {
   it('has a stylesheet', () => {
     const stylesheets = page.getStylesheets();
     expect(stylesheets).toHaveLength(1);
-    expect(stylesheets[0]).toMatch(/^\/assets\/(.*).css$/);
+    expect(stylesheets[0]).toMatch(/^sass\/(.*).css$/);
   });
 
   it('has main content', () => {

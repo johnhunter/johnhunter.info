@@ -1,19 +1,13 @@
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const eleventyLoad = require('eleventy-load');
-const sassLoaderRules = require('./utils/sassLoaderRules');
+const registerSassTemplate = require('./utils/registerSassTemplate');
 
 const isProduction = process.env.NODE_ENV === `production`;
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
 
+  registerSassTemplate(eleventyConfig);
   eleventyConfig.addWatchTarget('src/sass/');
-
-  eleventyConfig.addPlugin(eleventyLoad, {
-    rules: [
-      ...sassLoaderRules(isProduction),
-    ]
-  });
 
   return {
     templateFormats: ['md', 'njk', 'html'],
