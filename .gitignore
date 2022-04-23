@@ -10,6 +10,7 @@ node_modules/
 
 # Build artifacts
 _site/
+coverage/
 
 # Local Netlify folder
 .Netlify

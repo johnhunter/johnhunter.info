@@ -5,8 +5,6 @@
 
 module.exports = {
   clearMocks: true,
-  testEnvironment: "jsdom",
-  setupFilesAfterEnv: [
-    './utils/setupTestFixture.js',
-  ],
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/utils/setupTestFixture.js'],
 };

@@ -4,29 +4,30 @@ const sassLoaderRules = require('./utils/sassLoaderRules');
 
 const isProduction = process.env.NODE_ENV === `production`;
 
-module.exports = function(eleventyConfig) {
+const dir = {
+  input: 'src',
+  includes: '_includes',
+  data: '_data',
+  output: '_site',
+};
+
+module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
 
   eleventyConfig.addWatchTarget('src/sass/');
 
   eleventyConfig.addPlugin(eleventyLoad, {
-    rules: [
-      ...sassLoaderRules(isProduction),
-    ]
+    rules: [...sassLoaderRules(isProduction)],
   });
 
   return {
+    dir,
     templateFormats: ['md', 'njk', 'html'],
 
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     // dataTemplateEngine: 'njk',
-
-    dir: {
-      input: 'src',
-      includes: '_includes',
-      data: '_data',
-      output: '_site'
-    }
   };
 };
+
+module.exports.dir = dir;
