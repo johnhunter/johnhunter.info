@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "rm -rf _site/*",
     "build": "eleventy",
-    "build:ci": "npm run build && npm run test",
+    "build:ci": "NODE_ENV=production npm run build && npm run test",
     "build:prod": "npm run clean && NODE_ENV=production eleventy",
     "watch": "eleventy --watch",
     "start": "eleventy --serve",
@@ -35,7 +35,6 @@
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
-    "@testing-library/dom": "^8.13.0",
     "eleventy-load": "^0.3.1",
     "eleventy-load-css": "^0.3.0",
     "eleventy-load-file": "^0.1.0",
