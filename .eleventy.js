@@ -12,7 +12,6 @@ const dir = {
 };
 
 module.exports = function (eleventyConfig) {
-  console.log('Building with isProduction=', isProduction);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
 
   eleventyConfig.addWatchTarget('src/sass/');
