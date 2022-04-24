@@ -1,12 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
-const rootDir = process.cwd();
-const { dir } = require(path.resolve(rootDir, '.eleventy.js'));
+const { dir } = require(path.resolve('.eleventy.js'));
+
+if (!dir?.output) {
+  throw new Error(
+    'Cannot get `dir.output` from `.eleventy.js`, did you export it?'
+  );
+}
 
 const getPageHtml = (filePath) => {
   try {
-    const html = fs.readFileSync(path.resolve(rootDir, filePath), 'utf8');
+    const html = fs.readFileSync(path.resolve(dir?.output, filePath), 'utf8');
     return html.toString();
   } catch (err) {
     throw new Error(`Cannot find page '${filePath}'. Have you built the site?`);
@@ -23,31 +28,26 @@ const copyElementAttrs = (source, target) => {
 };
 
 /**
- * Boilerplate to load a page from the site output into the test document.
- * Is available as a global within tests.
+ * Loads a given html file and creates a Document instance, returning access methods.
  *
  * Note: <script> tags are not evaluated
  *
  * @param {string} filePath path to the file under test
  * @returns {{
- *  query: function,
- *  queryAll: function,
- *  getAttributes: function,
- *  getTitle: function,
- *  getMeta: function,
- *  getLinkHref: function
+ *  document: HTMLDocument,
+ *  query: Function,
+ *  queryAll: Function,
+ *  getAttrs: Function,
+ *  getRootAttrs: Function,
+ *  getTitle: Function,
+ *  getMeta: Function,
+ *  getLinkHrefs: Function,
+ *  getText: Function,
+ *  containsText: Function,
  * }}
  */
 const loadPage = (filePath) => {
-  if (!document || !document.documentElement) {
-    throw new Error('loadPage requires `document` to be defined');
-  }
-
-  const htmlStr = getPageHtml(path.resolve(dir.output, filePath));
-  document.documentElement.innerHTML = htmlStr;
-
-  const dom = createDomfromHtml(htmlStr);
-  copyElementAttrs(dom.documentElement, document.documentElement);
+  const document = createDomfromHtml(getPageHtml(filePath));
 
   const query = (sel) => document.querySelector(sel);
   const queryAll = (sel) => Array.from(document.querySelectorAll(sel));
@@ -64,15 +64,22 @@ const loadPage = (filePath) => {
     }, {});
   };
 
+  const getText = (el) => String(el.textContent);
+  const containsText = (el, text) => getText(el).includes(text);
+
   return {
+    document,
     query,
     queryAll,
     getAttrs,
-    getTitle: () => query('title').textContent,
+    getText,
+    containsText,
+    getRootAttrs: () => getAttrs(document.documentElement),
+    getTitle: () => getText(query('title')),
     getMeta: (name) => query(`meta[name="${name}"]`).getAttribute('content'),
-    getLinkHref: (rel = 'stylesheet') =>
+    getLinkHrefs: (rel) =>
       queryAll(`link[rel="${rel}"]`).map((node) => node.getAttribute('href')),
   };
 };
 
-global.loadPage = loadPage;
+module.exports = loadPage;

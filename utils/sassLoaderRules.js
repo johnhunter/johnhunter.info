@@ -3,13 +3,16 @@ const eleventyLoadSass = require('eleventy-load-sass');
 const eleventyLoadCss = require('eleventy-load-css');
 const eleventyLoadFile = require('eleventy-load-file');
 
-module.exports = function(isProduction) {
+module.exports = function (isProduction) {
   return [
     {
       test: /\.(html|md|njk)$$/,
       loaders: [
         {
-          loader: eleventyLoadHtml
+          loader: eleventyLoadHtml,
+          options: {
+            minimize: isProduction,
+          },
         },
       ],
     },
@@ -21,11 +24,11 @@ module.exports = function(isProduction) {
           options: {
             sass: {
               outputStyle: isProduction ? 'compressed' : 'expanded',
-            }
-          }
+            },
+          },
         },
         {
-          loader: eleventyLoadCss
+          loader: eleventyLoadCss,
         },
         {
           loader: eleventyLoadFile,

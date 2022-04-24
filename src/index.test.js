@@ -1,33 +1,24 @@
-describe('Homepage', () => {
-  let page;
+const test = require('ava');
+const loadPage = require('../utils/loadPage');
 
-  beforeEach(() => {
-    page = loadPage('./index.html');
-  });
+const page = loadPage('./index.html');
 
-  it('html is correct langauge', () => {
-    const attrs = page.getAttrs(document.documentElement);
-    expect(attrs.lang).toBe('en');
-  });
+test('html is correct langauge', (t) => {
+  t.is(page.getRootAttrs().lang, 'en');
+});
 
-  it('header has correct meta information', () => {
-    expect(document.title).toBe('johnhunter.info');
-    expect(page.getTitle()).toBe('johnhunter.info');
-    expect(page.getMeta('description')).toBe(
-      'The personal blog of John Hunter'
-    );
-  });
+test('header has correct meta information', (t) => {
+  t.is(page.getTitle(), 'johnhunter.info');
+  t.is(page.getMeta('description'), 'The personal blog of John Hunter');
+});
 
-  it('header has a stylesheet', () => {
-    const stylesheets = page.getLinkHref();
-    expect(stylesheets).toHaveLength(1);
-    expect(stylesheets[0]).toMatch(/^\/assets\/(.*).css$/);
-  });
+test('header has a stylesheet', (t) => {
+  const stylesheets = page.getLinkHrefs('stylesheet');
+  t.is(stylesheets.length, 1);
+  t.regex(stylesheets[0], /^\/assets\/(.*).css$/);
+});
 
-  it('has main content', () => {
-    const main = page.query('main');
-    expect(main.textContent).toEqual(
-      expect.stringContaining('Nothing to see here for now, just a wave')
-    );
-  });
+test('has main content', (t) => {
+  const main = page.query('main');
+  t.true(page.containsText(main, 'Nothing to see here for now, just a wave'));
 });

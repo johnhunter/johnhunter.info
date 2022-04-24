@@ -3,9 +3,12 @@
   publish = "_site"
   command = "npm run build:ci"
 
+[build.environment]
+  NODE_VERSION = "14"
+  ELEVENTY_ENV = "prod"
+
 [build.processing]
-[build.processing.html]
-  pretty_urls = true
+  skip_processing = true
 
 [[headers]]
 
