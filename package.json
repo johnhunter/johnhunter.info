@@ -15,13 +15,13 @@
   "scripts": {
     "clean": "rm -rf _site/*",
     "build": "eleventy",
-    "build:ci": "NODE_ENV=production npm run build && npm run test",
-    "build:prod": "npm run clean && NODE_ENV=production eleventy",
+    "build:ci": "ELEVENTY_ENV=prod npm run build && npm run test",
+    "build:prod": "npm run clean && ELEVENTY_ENV=prod eleventy",
     "watch": "eleventy --watch",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
     "test": "ava",
-    "test:watch": "npm run ava --watch"
+    "test:watch": "ava --watch"
   },
   "repository": {
     "type": "git",

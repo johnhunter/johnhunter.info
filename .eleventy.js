@@ -2,7 +2,7 @@ const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const eleventyLoad = require('eleventy-load');
 const sassLoaderRules = require('./utils/sassLoaderRules');
 
-const isProduction = process.env.NODE_ENV === `production`;
+const isProduction = process.env.ELEVENTY_ENV === `prod`;
 
 const dir = {
   input: 'src',
@@ -12,6 +12,7 @@ const dir = {
 };
 
 module.exports = function (eleventyConfig) {
+  console.log('Building with isProduction=', isProduction);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
 
   eleventyConfig.addWatchTarget('src/sass/');
