@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
-const rootDir = process.cwd();
-const { dir } = require(path.resolve(rootDir, '.eleventy.js'));
+const { dir } = require(path.resolve('.eleventy.js'));
 
 if (!dir?.output) {
   throw new Error(
