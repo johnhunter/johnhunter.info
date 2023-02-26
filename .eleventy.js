@@ -1,8 +1,5 @@
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const eleventyLoad = require('eleventy-load');
-const sassLoaderRules = require('./utils/sassLoaderRules');
-
-const isProduction = process.env.ELEVENTY_ENV === `prod`;
+const eleventySass = require('@11tyrocks/eleventy-plugin-sass-lightningcss');
 
 const dir = {
   input: 'src',
@@ -13,20 +10,13 @@ const dir = {
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
-
-  eleventyConfig.addWatchTarget('src/sass/');
-
-  eleventyConfig.addPlugin(eleventyLoad, {
-    rules: [...sassLoaderRules(isProduction)],
-  });
+  eleventyConfig.addPlugin(eleventySass);
 
   return {
     dir,
     templateFormats: ['md', 'njk', 'html'],
-
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
-    // dataTemplateEngine: 'njk',
   };
 };
 
