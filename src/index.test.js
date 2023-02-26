@@ -15,7 +15,7 @@ test('header has correct meta information', (t) => {
 test('header has a stylesheet', (t) => {
   const stylesheets = page.getLinkHrefs('stylesheet');
   t.is(stylesheets.length, 1);
-  t.regex(stylesheets[0], /^\/assets\/(.*).css$/);
+  t.regex(stylesheets[0], /^sass\/styles.css$/);
 });
 
 test('has main content', (t) => {
