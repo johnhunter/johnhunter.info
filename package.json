@@ -35,7 +35,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
-    "@11tyrocks/eleventy-plugin-sass-lightningcss": "^1.0.1",
+    "@11tyrocks/eleventy-plugin-sass-lightningcss": "^1.0.2",
     "ava": "^5.2.0",
     "jsdom": "^21.1.0"
   },
