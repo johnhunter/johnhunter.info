@@ -38,8 +38,5 @@
     "@11tyrocks/eleventy-plugin-sass-lightningcss": "^1.1.0",
     "ava": "^5.3.1",
     "jsdom": "^23.0.1"
-  },
-  "volta": {
-    "node": "16.15.0"
   }
 }

@@ -4,7 +4,6 @@
   command = "npm run build:ci"
 
 [build.environment]
-  NODE_VERSION = "16"
   ELEVENTY_ENV = "prod"
 
 [build.processing]
