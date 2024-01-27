@@ -37,6 +37,6 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@11tyrocks/eleventy-plugin-sass-lightningcss": "^1.2.0",
     "ava": "^6.1.0",
-    "jsdom": "^23.2.0"
+    "jsdom": "^24.0.0"
   }
 }
