@@ -12,6 +12,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(eleventySass);
 
+  eleventyConfig.addPassthroughCopy('.well-known');
+
   return {
     dir,
     templateFormats: ['md', 'njk', 'html'],
