@@ -1,7 +1,7 @@
 
 [build]
   publish = "_site"
-  command = "npm run build:ci"
+  command = "npm run prod"
 
 [build.environment]
   ELEVENTY_ENV = "prod"
