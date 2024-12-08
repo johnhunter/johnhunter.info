@@ -11,6 +11,10 @@ node_modules/
 # Build artifacts
 _site/
 coverage/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # Local Netlify folder
 .Netlify
