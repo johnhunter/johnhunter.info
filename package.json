@@ -14,11 +14,8 @@
   },
   "scripts": {
     "clean": "rm -rf _site/*",
-    "build": "eleventy",
-    "prod": "ELEVENTY_ENV=prod eleventy --serve",
-    "watch": "eleventy --watch",
-    "start": "eleventy --serve",
-    "debug": "DEBUG=* eleventy",
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve --quiet",
     "test": "npx playwright test"
   },
   "repository": {
