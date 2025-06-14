@@ -8,6 +8,7 @@ const dir = {
   output: '_site',
 };
 
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(eleventySass);
